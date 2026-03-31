@@ -1452,9 +1452,9 @@
 <div class="modal-overlay" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal">
         <div class="modal-icon">✅</div>
-        <h3 id="modalTitle">Message Sent!</h3>
-        <p>Thank you for reaching out. We'll review your project details and get back to you within 24 hours.<br><br>
-        For faster response, you can also WhatsApp us directly at <strong>+91-7767074940</strong>.</p>
+        <h3 id="modalTitle">Opening WhatsApp…</h3>
+        <p>Your message has been prepared and WhatsApp should open in a new tab with all your details pre-filled.<br><br>
+        If it didn't open automatically, you can reach us directly at <strong>+91-7767074940</strong> on WhatsApp.</p>
         <button class="modal-close" id="modalCloseBtn">Done</button>
     </div>
 </div>
@@ -1579,7 +1579,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     var btnText = document.getElementById('submitText');
     btn.disabled = true;
     spinner.style.display = 'block';
-    btnText.textContent = 'Sending…';
+    btnText.textContent = 'Opening WhatsApp…';
 
     // Persist to localStorage
     var formData = {
@@ -1599,17 +1599,55 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         value: 1
     });
 
-    // Simulate async submission (replace with real endpoint if available)
+    // Build WhatsApp message and open in new tab
+    var serviceLabels = {
+        'hydrological': 'Hydrological Studies',
+        'hydraulic': 'Hydraulic Modelling',
+        'gis': 'GIS & Remote Sensing',
+        'water-supply': 'Water Supply Design',
+        'wastewater': 'Wastewater Management',
+        'dpr': 'DPR Preparation',
+        'other': 'Other / Not Sure',
+        '': 'Not specified'
+    };
+    var serviceLabel = serviceLabels[formData.service] || formData.service || 'Not specified';
+    var waMessage =
+        'Hello RiverGrid Team,\n\n' +
+        'I would like to enquire about your services. Here are my details:\n\n' +
+        '👤 Name: ' + formData.name + '\n' +
+        '📧 Email: ' + formData.email + '\n' +
+        '📞 Phone: ' + formData.phone + '\n' +
+        '🔧 Service Required: ' + serviceLabel + '\n' +
+        '📝 Project Description:\n' + formData.message + '\n\n' +
+        'Please get back to me at your earliest convenience.\n\nThank you!';
+    var waURL = 'https://wa.me/917767074940?text=' + encodeURIComponent(waMessage);
+
     setTimeout(function() {
         btn.disabled = false;
         spinner.style.display = 'none';
         btnText.textContent = 'Send Message';
+        var waWindow = window.open(waURL, '_blank', 'noopener,noreferrer');
         document.getElementById('contactForm').reset();
         ['name','email','phone','message'].forEach(function(id) {
             var el = document.getElementById(id);
             if (el) { el.classList.remove('valid','invalid'); }
         });
-        document.getElementById('successModal').classList.add('active');
+        var modal = document.getElementById('successModal');
+        if (waWindow === null) {
+            // Popup was blocked — show a direct link in the modal
+            document.getElementById('modalTitle').textContent = 'Ready to Send!';
+            document.querySelector('#successModal .modal p').innerHTML =
+                'Your browser blocked the automatic redirect. ' +
+                'Please click the link below to open WhatsApp with your pre-filled message:<br><br>' +
+                '<a href="' + waURL + '" target="_blank" rel="noopener noreferrer" ' +
+                'style="color:#25d366;font-weight:600;word-break:break-all;">Open WhatsApp →</a>';
+        } else {
+            document.getElementById('modalTitle').textContent = 'Opening WhatsApp\u2026';
+            document.querySelector('#successModal .modal p').innerHTML =
+                'Your message has been prepared and WhatsApp should open in a new tab with all your details pre-filled.<br><br>' +
+                'If it didn\u2019t open automatically, you can reach us directly at <strong>+91-7767074940</strong> on WhatsApp.';
+        }
+        modal.classList.add('active');
     }, 1200);
 });
 
