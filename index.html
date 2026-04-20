@@ -138,7 +138,7 @@
         /* ===== HEADER ===== */
         header {
             background: linear-gradient(135deg, #0a3d62, #1e3799);
-            padding: 15px 0;
+            padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -154,15 +154,46 @@
             align-items: center;
         }
 
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid rgba(255,255,255,0.25);
+        }
+
+        .logo-text-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
         .logo {
             color: white;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             text-decoration: none;
+            line-height: 1.1;
         }
 
         .logo span {
             color: #3498db;
+        }
+
+        .logo-tagline {
+            font-size: 0.7rem;
+            color: #a8d4f5;
+            letter-spacing: 0.5px;
+            font-style: italic;
+            margin-top: 2px;
         }
 
         .nav-links {
@@ -448,9 +479,111 @@
             line-height: 1.7;
         }
 
+        /* ===== VISION & MISSION ===== */
+        .vision-mission {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .vm-card {
+            background: white;
+            border-radius: 18px;
+            padding: 40px 35px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border-top: 5px solid #3498db;
+            transition: transform 0.3s;
+        }
+
+        .vm-card:nth-child(2) {
+            border-top-color: #27ae60;
+        }
+
+        .vm-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .vm-icon {
+            font-size: 2.8rem;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .vm-card h3 {
+            font-size: 1.4rem;
+            color: #0a3d62;
+            margin-bottom: 14px;
+            font-weight: 700;
+        }
+
+        .vm-card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 0.98rem;
+        }
+
+        .vm-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .vm-list li {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            padding: 6px 0;
+            border-bottom: 1px solid #f0f4f8;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .vm-list li:last-child {
+            border-bottom: none;
+        }
+
+        .vm-list li::before {
+            content: '✅';
+            flex-shrink: 0;
+            margin-top: 2px;
+            font-size: 0.85rem;
+        }
+
         /* ===== PORTFOLIO ===== */
         .portfolio {
             background: #f8f9fa;
+        }
+
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid #ddd;
+            color: #555;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #3498db;
+            border-color: #3498db;
+            color: white;
         }
 
         .portfolio-grid {
@@ -464,44 +597,71 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
         }
 
         .portfolio-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.14);
+        }
+
+        .portfolio-card[data-category].hidden {
+            display: none;
         }
 
         .portfolio-img {
-            height: 180px;
+            height: 160px;
             background: linear-gradient(135deg, #0a3d62, #3498db);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
+            position: relative;
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(39,174,96,0.92);
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
         }
 
         .portfolio-content {
-            padding: 25px;
+            padding: 22px 22px 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .portfolio-content h3 {
             color: #0a3d62;
-            margin-bottom: 10px;
-            font-size: 1.05rem;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.4;
         }
 
         .portfolio-content p {
             color: #666;
-            font-size: 0.9rem;
-            line-height: 1.7;
-            margin-bottom: 15px;
+            font-size: 0.88rem;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            flex: 1;
         }
 
         .portfolio-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 5px;
         }
 
         .tag {
@@ -509,8 +669,18 @@
             color: #1e3799;
             padding: 3px 10px;
             border-radius: 20px;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-weight: 600;
+        }
+
+        .tag.tool {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .tag.result {
+            background: #e8f5e9;
+            color: #2e7d32;
         }
 
         /* ===== FOUNDER ===== */
@@ -1003,12 +1173,16 @@
             .hero h1 { font-size: 1.8rem; }
             .hero p { font-size: 1rem; }
             .nav-links { display: none; }
+            .logo-img { width: 44px; height: 44px; }
+            .logo { font-size: 1.3rem; }
+            .logo-tagline { font-size: 0.62rem; }
             .about-grid,
             .contact-grid { grid-template-columns: 1fr; gap: 30px; }
             .services-grid,
             .why-grid,
             .portfolio-grid,
             .testimonials-grid { grid-template-columns: 1fr; }
+            .vm-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
             .trust-bar-inner { gap: 20px 30px; }
         }
@@ -1017,6 +1191,8 @@
             section { padding: 50px 15px; }
             .hero { padding: 70px 15px; }
             .about-stats { grid-template-columns: 1fr 1fr; }
+            .portfolio-filter { gap: 6px; }
+            .filter-btn { padding: 6px 14px; font-size: 0.82rem; }
         }
     </style>
 </head>
@@ -1025,9 +1201,17 @@
 <!-- ===== HEADER ===== -->
 <header>
     <nav>
-        <a href="#home" class="logo">River<span>Grid</span></a>
+        <a href="#home" class="logo-wrapper" aria-label="RiverGrid Home">
+            <img src="https://github.com/user-attachments/assets/19c5d8a0-5cb7-4a36-896c-21e2b950b30b"
+                 alt="RiverGrid Logo" class="logo-img">
+            <div class="logo-text-block">
+                <span class="logo">River<span>Grid</span></span>
+                <span class="logo-tagline">Shaping a Smarter Water Future</span>
+            </div>
+        </a>
         <ul class="nav-links">
             <li><a href="#about" onclick="trackNav('About')">About</a></li>
+            <li><a href="#vision" onclick="trackNav('Vision')">Vision &amp; Mission</a></li>
             <li><a href="#services" onclick="trackNav('Services')">Services</a></li>
             <li><a href="#portfolio" onclick="trackNav('Portfolio')">Portfolio</a></li>
             <li><a href="#contact" onclick="trackNav('Contact')">Contact</a></li>
@@ -1097,7 +1281,7 @@
             </div>
             <div class="about-stats">
                 <div class="stat-card">
-                    <div class="stat-number">10+</div>
+                    <div class="stat-number">11+</div>
                     <div class="stat-label">Projects Delivered</div>
                 </div>
                 <div class="stat-card">
@@ -1105,13 +1289,39 @@
                     <div class="stat-label">Years Experience</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">3+</div>
+                    <div class="stat-number">4+</div>
                     <div class="stat-label">States Covered</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">100%</div>
                     <div class="stat-label">Client Satisfaction</div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== VISION & MISSION ===== -->
+<section class="vision-mission" id="vision">
+    <div class="container">
+        <h2 class="section-title">Our Vision &amp; Mission</h2>
+        <p class="section-subtitle">Guided by purpose — committed to sustainable water resource engineering that leaves a lasting impact.</p>
+        <div class="vm-grid">
+            <div class="vm-card">
+                <span class="vm-icon">🌍</span>
+                <h3>Our Vision</h3>
+                <p>To become a trusted leader in sustainable water resource engineering, delivering innovative and practical solutions that support resilient infrastructure and responsible water management for future generations.</p>
+            </div>
+            <div class="vm-card">
+                <span class="vm-icon">🎯</span>
+                <h3>Our Mission</h3>
+                <ul class="vm-list">
+                    <li>Provide high-quality engineering solutions in water resources, hydrology, and infrastructure design.</li>
+                    <li>Deliver accurate, efficient, and cost-effective project reports (DPRs) and technical services.</li>
+                    <li>Leverage advanced tools like GIS and hydraulic modelling for better decision-making.</li>
+                    <li>Support clients with reliable, timely, and customised solutions.</li>
+                    <li>Promote sustainable practices in water management and environmental protection.</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -1195,82 +1405,209 @@
 <section class="portfolio" id="portfolio">
     <div class="container">
         <h2 class="section-title">Featured Projects</h2>
-        <p class="section-subtitle">Real projects, real results — delivering measurable impact for our clients.</p>
+        <p class="section-subtitle">Real projects, real results — delivering measurable impact across India.</p>
+
+        <div class="portfolio-filter">
+            <button class="filter-btn active" data-filter="all" onclick="filterPortfolio(this,'all')">All Projects</button>
+            <button class="filter-btn" data-filter="water-supply" onclick="filterPortfolio(this,'water-supply')">Water Supply &amp; Irrigation</button>
+            <button class="filter-btn" data-filter="hydraulics" onclick="filterPortfolio(this,'hydraulics')">Hydraulics &amp; Flood</button>
+            <button class="filter-btn" data-filter="drainage" onclick="filterPortfolio(this,'drainage')">Drainage &amp; Sewerage</button>
+            <button class="filter-btn" data-filter="investigation" onclick="filterPortfolio(this,'investigation')">Investigation &amp; Planning</button>
+        </div>
+
         <div class="portfolio-grid">
-            <div class="portfolio-card" onclick="trackPortfolioView('Flood Mapping - Nagpur')">
-                <div class="portfolio-img">🌊</div>
+
+            <!-- Project 1 -->
+            <div class="portfolio-card" data-category="water-supply" onclick="trackPortfolioView('Water Distribution System 500 KLD')">
+                <div class="portfolio-img" style="background:linear-gradient(135deg,#0a3d62,#2980b9);">
+                    💧
+                    <span class="portfolio-badge">12% Cost Saving</span>
+                </div>
                 <div class="portfolio-content">
-                    <h3>Urban Flood Risk Mapping — Nagpur</h3>
-                    <p>Developed a flood inundation model using HEC-RAS 2D, enabling identification of high-risk zones and supporting safer infrastructure planning. Output used for municipal DPR approval.</p>
+                    <h3>Water Distribution System — 500 KLD Capacity</h3>
+                    <p>Designed a complete water distribution system for a 500 KLD capacity project using WaterGEMS and EPANET. Optimised pipe sizing and network layout to achieve a 12% cost saving over the conventional design.</p>
                     <div class="portfolio-tags">
-                        <span class="tag">HEC-RAS 2D</span>
-                        <span class="tag">GIS Mapping</span>
-                        <span class="tag">Flood Risk</span>
+                        <span class="tag tool">WaterGEMS</span>
+                        <span class="tag tool">EPANET</span>
+                        <span class="tag">Water Distribution</span>
+                        <span class="tag result">12% Cost Saving</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="portfolio-card" data-category="drainage" onclick="trackPortfolioView('Sewerage System Shikalahasti')">
+                <div class="portfolio-img" style="background:linear-gradient(135deg,#145a32,#27ae60);">
+                    ♻️
+                    <span class="portfolio-badge">18% Cost Saving</span>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Sewerage System — Shikalahasti Municipality, AP</h3>
+                    <p>Designed a comprehensive sewerage system for Shikalahasti Municipality contributing to their sustainable development goals. Achieved an 18% cost saving through network optimisation and efficient design.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Sewerage Design</span>
+                        <span class="tag">Municipal</span>
+                        <span class="tag">DPR</span>
+                        <span class="tag result">18% Cost Saving</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="portfolio-card" data-category="water-supply" onclick="trackPortfolioView('Pressurized Irrigation Chhatarpur')">
+                <div class="portfolio-img" style="background:linear-gradient(135deg,#1a5276,#2471a3);">
+                    🌾
+                </div>
+                <div class="portfolio-content">
+                    <h3>Pressurized Irrigation System — Chhatarpur Municipality, MP</h3>
+                    <p>Designed a pressurized irrigation system using WaterGEMS for Chhatarpur Municipality covering a command area of 54,600 Ha, ensuring efficient water management and equitable distribution across the region.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag tool">WaterGEMS</span>
+                        <span class="tag">Pressurized Irrigation</span>
+                        <span class="tag">54,600 Ha Coverage</span>
                         <span class="tag">Municipal</span>
                     </div>
                 </div>
             </div>
-            <div class="portfolio-card" onclick="trackPortfolioView('Water Supply Scheme')">
-                <div class="portfolio-img">💧</div>
+
+            <!-- Project 4 -->
+            <div class="portfolio-card" data-category="drainage" onclick="trackPortfolioView('Stormwater Drainage Grasim Nagda')">
+                <div class="portfolio-img" style="background:linear-gradient(135deg,#4a235a,#7d3c98);">
+                    🏭
+                </div>
                 <div class="portfolio-content">
-                    <h3>Rural Water Supply Scheme — Maharashtra</h3>
-                    <p>Designed a water supply scheme for 5 villages covering demand analysis, source selection, and pipe network design. DPR submitted and sanctioned under Jal Jeevan Mission.</p>
+                    <h3>Storm Water &amp; Process Water Drainage — Grasim, Nagda Chemical Industry</h3>
+                    <p>Designed storm water and process water drainage systems for Grasim Industries, Nagda Chemical Plant. Improved water management efficiency by separating storm and process water flows.</p>
                     <div class="portfolio-tags">
-                        <span class="tag">WaterGEMS</span>
+                        <span class="tag">Stormwater Drainage</span>
+                        <span class="tag">Process Water</span>
+                        <span class="tag">Industrial</span>
+                        <span class="tag">Chemical Industry</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="portfolio-card" data-category="hydraulics" onclick="trackPortfolioView('Afflux Sediment Wainganga River')">
+                <div class="portfolio-img" style="background:linear-gradient(135deg,#0a3d62,#1e3799);">
+                    🌉
+                </div>
+                <div class="portfolio-content">
+                    <h3>Afflux &amp; Sediment Hydraulic Model — Wainganga River, Bhandara Bridge</h3>
+                    <p>Prepared a detailed hydraulic model using HEC-RAS for afflux rise and sediment calculations on the Wainganga River near Bhandara Bridge. Studied the impact on the old bridge structure and recommended remedial measures to ensure serviceability.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag tool">HEC-RAS</span>
+                        <span class="tag">Afflux Analysis</span>
+                        <span class="tag">Sediment Transport</span>
+                        <span class="tag">Bridge Assessment</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="portfolio-card" data-category="hydraulics" onclick="trackPortfolioView('Flood Line Nag River')">
+                <div class="portfolio-img" style="background:linear-gradient(135deg,#154360,#1f618d);">
+                    🌊
+                </div>
+                <div class="portfolio-content">
+                    <h3>Flood Line &amp; Cross-Section Survey — Nag River</h3>
+                    <p>Computed cross-sections and delineated flood lines for the Nag River using HEC-RAS, contributing to flood management strategies and supporting municipal infrastructure planning.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag tool">HEC-RAS</span>
+                        <span class="tag">Flood Line Delineation</span>
+                        <span class="tag">Cross-Section Analysis</span>
+                        <span class="tag">GIS Mapping</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="portfolio-card" data-category="hydraulics" onclick="trackPortfolioView('Ghugus Nalla Diversion')">
+                <div class="portfolio-img" style="background:linear-gradient(135deg,#1b4f72,#2e86c1);">
+                    🔄
+                </div>
+                <div class="portfolio-content">
+                    <h3>Ghugus Nalla Diversion System — Industrial Use</h3>
+                    <p>Designed a nalla diversion system for Ghugus industrial use, incorporating flood discharge calculations using empirical formulas to ensure effective water management and prevent flood inundation of industrial areas.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Nalla Diversion</span>
+                        <span class="tag">Empirical Flood Formulas</span>
+                        <span class="tag">Industrial Water Mgmt</span>
+                        <span class="tag">Hydrology</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="portfolio-card" data-category="investigation" onclick="trackPortfolioView('Flood Management Vishwamitri Gujarat')">
+                <div class="portfolio-img" style="background:linear-gradient(135deg,#0b5345,#148f77);">
+                    🌍
+                </div>
+                <div class="portfolio-content">
+                    <h3>Flood Management Plan — Vishwamitri River, Gujarat</h3>
+                    <p>Prepared a comprehensive flood management plan for the Gujarat Irrigation Department using check dams and ponding methods. Recommended Managed Aquifer Recharge (MAR) to replenish depleted groundwater levels. Conducted aquifer layer studies using Electrical Resistivity Tomography (ERT) in the Vadodara region.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag tool">ERT Survey</span>
+                        <span class="tag tool">GIS</span>
+                        <span class="tag">Check Dams</span>
+                        <span class="tag">MAR Method</span>
+                        <span class="tag">Groundwater Recharge</span>
+                        <span class="tag">Govt. Client</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 9 -->
+            <div class="portfolio-card" data-category="investigation" onclick="trackPortfolioView('Archaeological Survey Kolitmara MP')">
+                <div class="portfolio-img" style="background:linear-gradient(135deg,#4d3319,#784212);">
+                    🔍
+                </div>
+                <div class="portfolio-content">
+                    <h3>Archaeological Investigation — Kolitmara Site, Madhya Pradesh</h3>
+                    <p>Studied the presence of archaeological materials at Kolitmara, MP using advanced Ground Penetrating Radar (GPR) technology. Prepared probability maps of material occurrence, conducted site surveys, and compiled a comprehensive archaeological investigation report.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag tool">Ground Penetrating Radar (GPR)</span>
+                        <span class="tag">Archaeological Survey</span>
+                        <span class="tag">GIS Mapping</span>
+                        <span class="tag">Site Investigation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 10 -->
+            <div class="portfolio-card" data-category="hydraulics" onclick="trackPortfolioView('Nalla Hydrology Gadchiroli')">
+                <div class="portfolio-img" style="background:linear-gradient(135deg,#1c2833,#2e4057);">
+                    🏗️
+                </div>
+                <div class="portfolio-content">
+                    <h3>Nalla Hydrology &amp; Diversion Plan — Vadlapeth, Gadchiroli</h3>
+                    <p>Studied the hydrology of Vadlapeth and Gadchiroli Division nallas and prepared a detailed nalla diversion plan for Surjagad Ispat Pvt. Ltd. Delivered a complete project report including hydrological calculations and design recommendations.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Nalla Hydrology</span>
+                        <span class="tag">Diversion Design</span>
                         <span class="tag">DPR Preparation</span>
-                        <span class="tag">Jal Jeevan Mission</span>
+                        <span class="tag">Industrial</span>
                     </div>
                 </div>
             </div>
-            <div class="portfolio-card" onclick="trackPortfolioView('Drainage Master Plan')">
-                <div class="portfolio-img">🌧️</div>
+
+            <!-- Project 11 -->
+            <div class="portfolio-card" data-category="investigation" onclick="trackPortfolioView('Earthen Dam Design IS Code')">
+                <div class="portfolio-img" style="background:linear-gradient(135deg,#5d4037,#795548);">
+                    🏔️
+                </div>
                 <div class="portfolio-content">
-                    <h3>Stormwater Drainage Master Plan — Urban Town</h3>
-                    <p>Conducted rainfall-runoff analysis using SWMM, identified drainage bottlenecks, and proposed cost-optimised solutions reducing flood duration by 60% during design storm events.</p>
+                    <h3>Earthen Dam Design — IS Code Compliant</h3>
+                    <p>Designed an earthen dam for a private builder in accordance with IS code specifications. The design encompassed geotechnical analysis, seepage and stability checks, spillway design, and complete drawing sets for regulatory submission.</p>
                     <div class="portfolio-tags">
-                        <span class="tag">SWMM</span>
-                        <span class="tag">Stormwater</span>
-                        <span class="tag">Hydrological Analysis</span>
+                        <span class="tag">Earthen Dam</span>
+                        <span class="tag">IS Code</span>
+                        <span class="tag">Seepage Analysis</span>
+                        <span class="tag">Stability Design</span>
                     </div>
                 </div>
             </div>
-            <div class="portfolio-card" onclick="trackPortfolioView('Bridge Hydraulics')">
-                <div class="portfolio-img">🌉</div>
-                <div class="portfolio-content">
-                    <h3>Bridge Hydraulics &amp; Scour Analysis</h3>
-                    <p>Performed hydraulic analysis for bridge design using HEC-RAS 1D, estimating design flood levels, freeboard requirements, and scour depths. Report accepted by PWD at first review.</p>
-                    <div class="portfolio-tags">
-                        <span class="tag">HEC-RAS 1D</span>
-                        <span class="tag">Bridge Design</span>
-                        <span class="tag">PWD</span>
-                    </div>
-                </div>
-            </div>
-            <div class="portfolio-card" onclick="trackPortfolioView('Catchment Study')">
-                <div class="portfolio-img">🗺️</div>
-                <div class="portfolio-content">
-                    <h3>Catchment Area Study &amp; GIS Mapping</h3>
-                    <p>Delineated catchment boundaries, generated land-use/land-cover maps, and estimated runoff using GIS and satellite data, providing the input base for a major irrigation DPR.</p>
-                    <div class="portfolio-tags">
-                        <span class="tag">ArcGIS</span>
-                        <span class="tag">QGIS</span>
-                        <span class="tag">Satellite Data</span>
-                        <span class="tag">Irrigation</span>
-                    </div>
-                </div>
-            </div>
-            <div class="portfolio-card" onclick="trackPortfolioView('Wastewater Treatment')">
-                <div class="portfolio-img">♻️</div>
-                <div class="portfolio-content">
-                    <h3>Wastewater Treatment Plant — Design</h3>
-                    <p>Designed a wastewater treatment facility for a township of 15,000 population, achieving CPCB compliance standards and reducing capital cost by 15% through optimised unit sizing.</p>
-                    <div class="portfolio-tags">
-                        <span class="tag">Wastewater Design</span>
-                        <span class="tag">CPCB Compliant</span>
-                        <span class="tag">DPR</span>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </section>
@@ -1412,7 +1749,14 @@
 <footer>
     <div class="footer-grid">
         <div class="footer-brand">
-            <a href="#home" class="logo">River<span>Grid</span></a>
+            <a href="#home" class="logo-wrapper" aria-label="RiverGrid Home" style="margin-bottom:12px;display:inline-flex;">
+                <img src="https://github.com/user-attachments/assets/19c5d8a0-5cb7-4a36-896c-21e2b950b30b"
+                     alt="RiverGrid Logo" class="logo-img" style="width:44px;height:44px;">
+                <div class="logo-text-block">
+                    <span class="logo">River<span>Grid</span></span>
+                    <span class="logo-tagline">Shaping a Smarter Water Future</span>
+                </div>
+            </a>
             <p>Specialist water resource engineering firm providing hydrological studies, hydraulic modelling, GIS mapping, and DPR services to government and private sector clients across India.</p>
         </div>
         <div class="footer-col">
@@ -1430,6 +1774,7 @@
             <h4>Quick Links</h4>
             <ul>
                 <li><a href="#about">About Us</a></li>
+                <li><a href="#vision">Vision &amp; Mission</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#why-us">Why Choose Us</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -1650,6 +1995,19 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         modal.classList.add('active');
     }, 1200);
 });
+
+// ── Portfolio filter ────────────────────────────────────────────────────────
+function filterPortfolio(btn, category) {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.portfolio-card').forEach(function(card) {
+        if (category === 'all' || card.dataset.category === category) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
 
 // Modal close
 document.getElementById('modalCloseBtn').addEventListener('click', function() {
